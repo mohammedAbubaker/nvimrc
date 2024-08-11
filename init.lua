@@ -1,7 +1,7 @@
 -- Remap
 -- highlight
 vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader>pv', '<Cmd>Neotree float toggle <CR>')
+vim.keymap.set('n', '<leader><leader>', '<Cmd>Neotree float toggle <CR>')
 -- End Remap
 
 -- Line Numbers
@@ -32,7 +32,7 @@ require('packer').startup(function(use)
 	
 	-- Theme
 	use { "zootedb0t/citruszest.nvim" }
-	vim.cmd('colorscheme citruszest')
+	vim.cmd('colorscheme blue')
 	-- End Theme
 
     vim.cmd('autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE')
