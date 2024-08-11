@@ -1,7 +1,7 @@
 -- Remap
 -- highlight
 vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader><leader>', '<Cmd>Neotree float toggle <CR>')
+vim.keymap.set('n', '<leader>e', '<Cmd>Neotree float toggle <CR>')
 -- End Remap
 
 -- Line Numbers
