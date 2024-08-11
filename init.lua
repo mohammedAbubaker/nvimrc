@@ -1,3 +1,6 @@
+vim.api.nvim_create_autocmd("VimEnter", { nested = true, callback = function() pcall(vim.cmd.colorscheme, vim.g.SCHEME) end, })
+vim.api.nvim_create_autocmd("ColorScheme", { callback = function(params) vim.g.SCHEME = params.match end, })
+
 -- Remap
 -- highlight
 vim.g.mapleader = ' '
@@ -27,6 +30,7 @@ require('packer').startup(function(use)
 
 	local telescope = require('telescope.builtin')
 	vim.keymap.set('n', '<leader><leader>', telescope.find_files, {})
+	vim.keymap.set('n', '<leader>t', telescope.colorscheme, {})
 	vim.keymap.set('n', '<C-p>', telescope.git_files, {})
 	-- End Telescope
 	
