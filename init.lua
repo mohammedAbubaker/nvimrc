@@ -13,6 +13,8 @@ vim.cmd([[au VimEnter * highlight MatchParen ctermbg=blue guibg=lightblue]])
 vim.cmd([[set tabstop=4]])
 vim.cmd([[set shiftwidth=4]])
 vim.cmd([[set expandtab]])
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+
 
 -- End Line Numbers
 
