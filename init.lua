@@ -29,6 +29,43 @@ require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim', tag = '0.1.6',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+	use { "zootedb0t/citruszest.nvim" }
+	use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    
+    use {
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v3.x',
+		requires = {
+			{'williamboman/mason.nvim'},
+			{'williamboman/mason-lspconfig.nvim'},
+
+			{'neovim/nvim-lspconfig'},
+			{'hrsh7th/nvim-cmp'},
+			{'hrsh7th/cmp-nvim-lsp'},
+			{'L3MON4D3/LuaSnip'},
+		}
+	}
+
+    use {
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		requires = { 
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		}
+	}
+
+    use {
+		"ggandor/leap.nvim"
+	}
+
+    use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
+
 
 	local telescope = require('telescope.builtin')
 	vim.keymap.set('n', '<leader><leader>', telescope.find_files, {})
@@ -37,14 +74,12 @@ require('packer').startup(function(use)
 	-- End Telescope
 	
 	-- Theme
-	use { "zootedb0t/citruszest.nvim" }
 	vim.cmd('colorscheme blue')
 	-- End Theme
 
     vim.cmd('autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE')
 	
 	-- Treesitter
-	use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	require'nvim-treesitter.configs'.setup {
 		-- A list of parser names, or "all" (the five listed parsers should always be installed)
 		ensure_installed = {"python", "c", "lua", "vim", "vimdoc", "query" },
@@ -67,19 +102,7 @@ require('packer').startup(function(use)
 	-- End Treesitter
 	
 	-- LSP
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-		requires = {
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
-
-			{'neovim/nvim-lspconfig'},
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'L3MON4D3/LuaSnip'},
-		}
-	}
+	
 
 	local lsp = require('lsp-zero')
 	require('mason').setup({})
@@ -185,16 +208,7 @@ require('packer').startup(function(use)
 	}
 	-- End LSP
 	-- NeoTree
-	use {
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		requires = { 
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		}
-	}
+	
 
 	require('neo-tree').setup({
 		filesystem = {
@@ -206,17 +220,12 @@ require('packer').startup(function(use)
 	-- End NeoTree
 	
 	-- Leap
-	use {
-		"ggandor/leap.nvim"
-	}
+	
 	require('leap').create_default_mappings()
 	-- End Leap
 	
 	-- LuaLine
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-	}
+	
 
 	require('lualine').setup {
 		options = {
